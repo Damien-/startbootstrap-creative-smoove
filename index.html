@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<script type="text/javascript">
+$(document).ready(function(){
+    /* Get iframe src attribute value i.e. YouTube video url
+    and store it in a variable */
+    var url = $("#video").attr('src');
+    
+    /* Assign empty url value to the iframe src attribute when
+    modal hide, which stop the video playing */
+    $("#myModal").on('hide.bs.modal', function(){
+        $("#video").attr('src', '');
+    });
+    
+    /* Assign the initially stored url back to the iframe src
+    attribute when modal is displayed again */
+    $("#myModal").on('show.bs.modal', function(){
+        $("#video").attr('src', url);
+    });
+});
+</script>
 <head>
 
     <meta charset="utf-8">
@@ -93,12 +111,32 @@
 					suggestions for places to visit, creating a strong community. The aim is for wheelchair users to be able to get from A to B easily without worrying about 
 					a possible obstacle in their way. It is giving wheelchair users and their carers the freedom to explore, thus decreasing the impact of their disability on
 					the way they live their life.</p>
-                    <a href="#" class="btn btn-default btn-xl">Get Started!</a>
+                    <a href="#myModal" class="btn btn-default btn-xl" data-toggle="modal">Get Started!</a>
+					<!-- Modal HTML -->
+					<div id="myModal" class="modal fade">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+									<h4 class="modal-title">YouTube Video</h4>
+								</div>
+								<div class="modal-body">
+									<iframe id="video" width="560" height="315" src="https://www.youtube.com/embed/G9s3Y9GdXuE" frameborder="0" allowfullscreen></iframe>
+								</div>
+							</div>
+						</div>
+					</div>
                 </div>
             </div>
         </div>
     </section>
 
+	<aside class="bg-dark">
+        <div class="container text-center">
+			<iframe width="640" height="360" src="https://www.youtube.com/embed/G9s3Y9GdXuE" frameborder="0" allowfullscreen></iframe>
+		</div>
+    </aside>
+	
     <section id="team">
         <div class="container">
             <div class="row">
@@ -245,12 +283,13 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2>Free Download at Start Bootstrap!</h2>
-                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a>
+				<h2>Coming soon to the AppStore and Google Play!</h2>
+                <!--h2>Free Download at Start Bootstrap!</h2>
+                <a href="#" class="btn btn-default btn-xl wow tada">Download Now!</a-->
             </div>
         </div>
     </aside>
-
+	
     <section id="contact">
         <div class="container">
             <div class="row">
